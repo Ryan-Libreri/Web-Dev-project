@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function checkBackgroundChange() {
     let background = document.getElementById("game-background");
 
@@ -20,3 +21,6 @@ function checkBackgroundChange() {
     // Update the background dynamically
     background.style.backgroundImage = `url('${newBackground}')`;
 }
+=======
+
+>>>>>>> 53f225a253baf89e14651e57df53bcc8d3df66df
