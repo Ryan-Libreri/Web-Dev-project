@@ -1,0 +1,83 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url();
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+header, footer {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1.5em;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+
+.game-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2em;
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.top-panel {
+    text-align: center;
+  }
+  
+  .resource-counter {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  #brewButton {
+    padding: 10px 30px;
+    font-size: 1.2em;
+  }
+  
+  .content-panels {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    flex-wrap: wrap;
+  }
+  
+  .panel {
+    flex: 1;
+    min-width: 280px;
+  }
+
+button {
+    display: block;
+    margin: 1em 0;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #f4c95d;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e0b94d;
+  }
+  
+h2 {
+    margin-top: 2em;
+  }
+  
+#achievementList {
+    list-style-type: none;
+    padding: 0;
+}

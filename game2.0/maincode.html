@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Little Paws Café</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="visuals.css" />
 </head>
 <body>
     <header>
@@ -20,12 +20,30 @@
             </div>
 
             <button id="brewButton">Serve Coffee</button>
-
+        
+        <div class="game-panels">
             <section class="upgrades">
                 <h2>Upgrades</h2>
                 <button id="buyGrinder">Upgrade Grinder (Cost: <span id="grinderCost">20</span>)</button>
                 <button id="buyBarista">Hire Barista (Cost: <span id="baristaCost"></span></button>
             </section>
+
+            <section class="side-panel panel">
+                <section class="prestige">
+                    <h2>Prestige</h2>
+                    <button id="prestigeButton">Prestige for Brew Boost</button>
+                    <p>Brew Boost: x<span id="brewMultiplier">1</span></p>
+                </section>
+
+                <section class="achievements">
+                    <h2>Achievements</h2>
+                    <ul id="achievementList"></ul>
+            </section>
+        <section>
+        <div>
     </main>
+
+    <script src="java.js"></script>
+
 </body>
 </html>
