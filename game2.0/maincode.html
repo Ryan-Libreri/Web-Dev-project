@@ -13,7 +13,8 @@
     </header>
 
     <main>
-        <section class="game display">
+        
+        <section class="game-display">
             <div class="resource-counter">
                 Cups: <span id="CoffeeCount">0</span><br />
                 Per Second: <span id="CoffeePerSec">0</span>
@@ -21,26 +22,32 @@
 
             <button id="brewButton">Serve Coffee</button>
         
-        <div class="game-panels">
-            <section class="upgrades">
-                <h2>Upgrades</h2>
-                <button id="buyGrinder">Upgrade Grinder (Cost: <span id="grinderCost">20</span>)</button>
-                <button id="buyBarista">Hire Barista (Cost: <span id="baristaCost"></span></button>
-            </section>
+        <div id="upgradesPanel" class="game-pamel hidden">
+            <h2>Upgrades</h2>
+            <button id="buyGrinder">Upgrade Grinder (Cost: <span id="grinderCost">20</span>)</button>
+            <button id="buyBarista">Hire Barista (Cost: <span id="baristaCost"></span></button>
+        </div>
+        
+        <div id="pretigePanel" class="game-panel hidden">
+                <h2>Prestige</h2>
+                <button id="prestigeButton">Prestige for Brew Boost</button>
+                <p>Brew Boost: x<span id="brewMultiplier">1</span></p>
+        </div>
 
-            <section class="side-panel panel">
-                <section class="prestige">
-                    <h2>Prestige</h2>
-                    <button id="prestigeButton">Prestige for Brew Boost</button>
-                    <p>Brew Boost: x<span id="brewMultiplier">1</span></p>
-                </section>
-
-                <section class="achievements">
+        <div id="achievementsPanel" class="game-panel hidden">
                     <h2>Achievements</h2>
                     <ul id="achievementList"></ul>
-            </section>
+        </div>
         <section>
-        <div>
+        
+
+        <nav class="bottom-nav">
+                <button class="menu-btn" data-panel="upgradesPanel">🛠 Upgrades 🛠</button>
+                <button class="menu-btn" data-panel="prestigePanel">🔁 Prestige 🔁</button>
+                <button class="menu-btn" data-panel="achievementsPanel">🏆 Achievements 🏆</button>
+        </nav>
+       </section>
+    </div>
     </main>
 
     <script src="java.js"></script>
