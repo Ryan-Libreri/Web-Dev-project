@@ -77,9 +77,50 @@ h2 {
     margin-top: 2em;
   }
   
+  #achievementTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #ccc;
+}
+
+#achievementTable th, #achievementTable td {
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+#achievementTable th {
+    background-color: #f4c95d;
+    color: #333;
+    font-weight: bold;
+}
+
+#achievementTable td {
+    background-color: #f9f9f9;
+}
+
+#achievementTable tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+#achievementTable tr:hover {
+    background-color: #e0b94d;
+}
+
 #achievementList {
-    list-style-type: none;
+    margin: 0;
     padding: 0;
+    font-size: 1em;
+}
+
+#achievementTable td, #achievementTable th {
+    text-align: left;
+    padding: 10px;
 }
 
 .game-panel {

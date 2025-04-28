@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const prestigeBtn = document.getElementById("prestigeButton");
     const brewMultText = document.getElementById("brewMultiplier");
 
-    const achievementSound = new Audio("game2.0\achievement.mp3");
+    const achievementSound = new Audio("achievement.mp3");
     const achievementList = document.getElementById("achievementList");
 
     function updateDisplay() {
@@ -79,24 +79,92 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function checkAchievements() {
         const milestones = [
-            { id: "ach1", text: "First Cup!", condition: () => cups >= 1 },
-            { id: "ach10", text: "10 Cups Brewed", condition: () => cups >= 10 },
-            { id: "grind1", text: "Upgraded Grinder", condition: () => grinderLevel >= 1 },
-            { id: "bar1", text: "Hired First Barista", condition: () => baristas >= 1 },
+            {
+                id: "ach1",
+                name: "First Spill!",
+                condition: "Brew 5 cups",
+                description: "Oops, it still counts!",
+                conditionFunc: () => cups >= 5
+            },
+            {
+                id: "ach10",
+                name: "Caffein Rookie",
+                condition: "Brew 10 cups",
+                description: "You're just getting started!",
+                conditionFunc: () => cups >= 10
+            },
+            {
+                id: "ach100",
+                name: "Natural Brewer",
+                condition: "Brew 100 cups",
+                description: "Someone stop you!",
+                conditionFunc: () => cups >= 100
+            },
+            {
+                id: "ach500",
+                name: "Mug Life",
+                condition: "Serve coffee 500 times",
+                description: "Welcome to the team!",
+                conditionFunc: () => cups >= 500
+            },
+            {
+                id: "ach1000",
+                name: "Overflow Error",
+                condition: "Serve coffee 1000 times",
+                description: "Welcome to the team!",
+                conditionFunc: () => cups >= 1000
+            },
+            {
+                id: "grind1",
+                name: "First grind, First Glory",
+                condition: "Buy your first Grinder upgrade",
+                description: "The grind never stops!",
+                conditionFunc: () => grinderLevel >= 1
+            },
+            {
+                id: "bar1",
+                name: "Barista-in-Training",
+                condition: "Hire your first barista",
+                description: "The cat staff is in",
+                conditionFunc: () => baristas >= 1
+            },
+            {
+                id: "bar10",
+                name: "Feline Frenzy",
+                condition: "Hire 10 baristas",
+                description: "The fur is flying- and so is the coffee!",
+                conditionFunc: () => baristas >= 1
+            },
+           
         ];
-
+    
         milestones.forEach((m) => {
-            if (m.condition() && !unlockedAchievements.has(m.id)) {
+            if (m.conditionFunc() && !unlockedAchievements.has(m.id)) {
                 unlockedAchievements.add(m.id);
-                const li = document.createElement("li");
-                li.textContent = "🏆 " + m.text;
-                achievementList.appendChild(li);
-
+    
+                const row = document.createElement("tr");
+    
+                const nameCell = document.createElement("td");
+                nameCell.textContent = m.name;
+    
+                const conditionCell = document.createElement("td");
+                conditionCell.textContent = m.condition;
+    
+                const descriptionCell = document.createElement("td");
+                descriptionCell.textContent = m.description;
+    
+                row.appendChild(nameCell);
+                row.appendChild(conditionCell);
+                row.appendChild(descriptionCell);
+    
+                document.getElementById("achievementList").appendChild(row);
+    
                 achievementSound.currentTime = 0;
                 achievementSound.play();
             }
         });
     }
+    
 
     // Passive generation every second
     setInterval(() => {
