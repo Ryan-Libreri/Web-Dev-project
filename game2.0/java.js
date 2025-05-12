@@ -1,8 +1,28 @@
 window.addEventListener("DOMContentLoaded", () => {
 
+const backgroundMusic = new Audio("music.mp3")
+backgroundMusic.loop = true;  // Music loops forever
+backgroundMusic.volume = 0.05  //music volume forr game
+window.addEventListener("click", () =>{
+    if(backgroundMusic.paused){
+        backgroundMusic.play().catch(err =>{
+            console.log("Background music could not autoplay:", err)
+        });
+    }
+}, {once: true });
+
+const muteButton = document.getElementById("muteButton");
+
+muteButton.addEventListener("click", () =>{
+    backgroundMusic.muted = !backgroundMusic.muted;
+    muteButton.textContent = backgroundMusic.muted ? "Unmute Music" : "Mute Msic";
+})
+
+
     let cups = 0;
     let cupsPerSecond = 0;
     let brewMultiplier = 1;
+    let prestigeCount = 0;
     let grinderLevel = 0;
     let baristas = 0;
     let grinderCost = 20;
@@ -10,6 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let unlockedAchievements = new Set();
 
+    let prestigeRequirement = 10000 * Math.pow(3, prestigeCount);
     const cupsCount = document.getElementById("CoffeeCount");
     const cupsPerSec = document.getElementById("CoffeePerSec");
     const brewButton = document.getElementById("brewButton");
@@ -61,21 +82,51 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     prestigeBtn.addEventListener("click", () => {
-        if (cups >= 1000) {
-            cups = 0;
-            cupsPerSecond = 0;
-            grinderLevel = 0;
-            baristas = 0;
-            grinderCost = 20;
-            baristaCost = 50;
-            brewMultiplier += 1;
-            unlockedAchievements.clear();
-            achievementList.innerHTML = "";
-            updateDisplay();
+        if (cups >= prestigeRequirement) {
+            if (confirm(`Are you sure you want to Prestige? This will reset your progress but increase your Brew Boost to x${brewMultiplier + 1}.`)) {
+                cups = 0;
+                cupsPerSecond = 0;
+                grinderLevel = 0;
+                baristas = 0;
+                grinderCost = 20;
+                baristaCost = 50;
+    
+                brewMultiplier += 1;
+                prestigeCount += 1;
+                updateBackgroundForPrestige();
+    
+                unlockedAchievements.clear();
+                achievementList.innerHTML = "";
+    
+                alert(`Prestige complete! Your Brew Boost is now x${brewMultiplier}.`);
+                updateDisplay();
+            }
         } else {
-            alert("You need at least 1000 cups to Prestige!");
+            showNotification(`You need at least ${prestigeRequirement} cups to Prestige.`);
         }
     });
+
+    function showNotification(message) {
+        const notification = document.getElementById("notification");
+        notification.textContent = message;
+        notification.classList.remove("hidden");
+        notification.classList.add("show");
+    
+        setTimeout(() => {
+            notification.classList.remove("show");
+            notification.classList.add("hidden");
+        }, 2500);
+    }
+
+    function updateBackgroundForPrestige() {
+        const body = document.getElementById("gameBody");
+        if (prestigeCount >= 10) {
+            body.classList.add("prestige-10");
+        } else {
+            body.classList.remove("prestige-10")
+        }
+    }
+    
 
     function checkAchievements() {
         const milestones = [
@@ -120,6 +171,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 condition: "Buy your first Grinder upgrade",
                 description: "The grind never stops!",
                 conditionFunc: () => grinderLevel >= 1
+            },
+            {
+                id: "grind20",
+                name: "The real grind",
+                condition: "Upgrade grinder 20 times",
+                description: "All grind, no glory",
+                conditionFunc: () => grinderLevel >= 20
             },
             {
                 id: "bar1",
