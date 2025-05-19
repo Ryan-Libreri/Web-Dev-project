@@ -22,7 +22,7 @@
             <div class="resource-counter">
                 Coffee: <span id="CoffeeCount">0</span><br />
                 Coffee Per Second: <span id="CoffeePerSec">0</span><br />
-                Beans: <span id="beanCount">0</span><br />
+                Beans: <span id="beanCount">0</span>
             </div>
 
             <button id="brewButton">Serve Coffee</button>
@@ -52,6 +52,14 @@
                         <tbody id="achievementList"></tbody>
                     </table>
         </div>
+
+        <div id="blackMarketPanel" class="game-panel hidden">
+            <h2>🕵️ Black Market</h2>
+            <p>Spend your shady beans here...</p>
+            <button id="beanUpgrade1">+2 Cups/Sec (Cost: 5 Beans)</button>
+            <button id="beanUpgrade2">Halve Upgrade costs (Cost: 10 beans)</button>
+        </div>
+
         <section>
 
         <button id="muteButton">Mute Music</button>
@@ -61,8 +69,7 @@
                 <button class="menu-btn" data-panel="upgradesPanel">🛠 Upgrades 🛠</button>
                 <button class="menu-btn" data-panel="prestigePanel">🔁 Prestige 🔁</button>
                 <button class="menu-btn" data-panel="achievementsPanel">🏆 Achievements 🏆</button>
-                <button id="beanUpgrade1">+2 Cups/sec (5 Beans)</button>
-                <button id="beanUpgrade2">Halve Costs (8 Beans)</button>
+                <button class="menu-btn" data-panel="blackMarketPanel">🕵️ Black Market 🕵️</button>
         </nav>
        </section>
         </section>

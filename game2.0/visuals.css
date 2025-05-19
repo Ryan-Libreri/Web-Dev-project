@@ -239,17 +239,29 @@ body.prestige-10 {
 }
 
 #blackMarketPanel {
-  background-color: #1c1c1c;
-  color: #fff;
-  border: 2px solid #f4c95d;
-  box-shadow: 0 0 20px #f4c95d;
+    background: rgba(35, 35, 35, 0.9);
+    color: #f9f9f9;
+    padding: 1.5em;
+    border-radius: 12px;
+    margin-top: 2em;
+    box-shadow: 0 0 12px #000;
+}
+
+#blackMarketPanel h2 {
+    color: #f4c95d;
 }
 
 #blackMarketPanel button {
-  background-color: #444;
-  color: #f4c95d;
+    background-color: #ffb347;
+    color: black;
+    font-weight: bold;
 }
 
 #blackMarketPanel button:hover {
-  background-color: #555;
+    background-color: #e09e3e;
+}
+
+#beanCount {
+    font-weight: bold;
+    color: #8b4513;
 }
