@@ -6,7 +6,7 @@ A cozy web-based incremental clicker game where you serve coffee, upgrade your c
 
 ## 🎮 Game Preview  
 Check out a quick preview of the game here:  
-👉 [Watch Gameplay Preview](https://youtu.be/your-preview-link-here)  
+👉 [Watch Gameplay Preview((https://www.youtube.com/watch?v=HIjOw6NyEb4)  
 *(Note: Autoclick may have been enabled to speed up progress for demonstration.)*
 
 ---
