@@ -21,6 +21,7 @@ muteButton.addEventListener("click", () =>{
 
     let cups = 0;
     let cupsPerSecond = 0;
+    let beans = 0;
     let brewMultiplier = 1;
     let prestigeCount = 0;
     let grinderLevel = 0;
@@ -30,11 +31,12 @@ muteButton.addEventListener("click", () =>{
 
     let unlockedAchievements = new Set();
 
-    let prestigeRequirement = 10000 * Math.pow(3, prestigeCount);
+    
     const cupsCount = document.getElementById("CoffeeCount");
     const cupsPerSec = document.getElementById("CoffeePerSec");
     const brewButton = document.getElementById("brewButton");
-
+    const beanCount = document.getElementById("beanCount");
+    
     const grinderBtn = document.getElementById("buyGrinder");
     const baristaBtn = document.getElementById("buyBarista");
 
@@ -49,6 +51,7 @@ muteButton.addEventListener("click", () =>{
 
     function updateDisplay() {
         cupsCount.textContent = Math.floor(cups);
+        beanCount.textContent = beans;
         cupsPerSec.textContent = cupsPerSecond;
         grinderCostText.textContent = grinderCost;
         baristaCostText.textContent = baristaCost;
@@ -82,6 +85,7 @@ muteButton.addEventListener("click", () =>{
     });
 
     prestigeBtn.addEventListener("click", () => {
+        let prestigeRequirement = 10000 * Math.pow(3, prestigeCount);
         if (cups >= prestigeRequirement) {
             if (confirm(`Are you sure you want to Prestige? This will reset your progress but increase your Brew Boost to x${brewMultiplier + 1}.`)) {
                 cups = 0;
@@ -93,6 +97,7 @@ muteButton.addEventListener("click", () =>{
     
                 brewMultiplier += 1;
                 prestigeCount += 1;
+                beans += 3;
                 updateBackgroundForPrestige();
     
                 unlockedAchievements.clear();
@@ -191,7 +196,7 @@ muteButton.addEventListener("click", () =>{
                 name: "Feline Frenzy",
                 condition: "Hire 10 baristas",
                 description: "The fur is flying- and so is the coffee!",
-                conditionFunc: () => baristas >= 1
+                conditionFunc: () => baristas >= 10
             },
            
         ];
@@ -223,6 +228,31 @@ muteButton.addEventListener("click", () =>{
         });
     }
     
+    const eventBanner = document.getElementById("eventBanner");
+
+function triggerCoffeeRush() {
+    const originalMultiplier = brewMultiplier;
+    brewMultiplier *= 2;
+    eventBanner.textContent = "☕ Coffee Rush! Double cups per click for 10 seconds!";
+    eventBanner.style.display = "block";
+
+    setTimeout(() => {
+        brewMultiplier = originalMultiplier;
+        eventBanner.style.display = "none";
+        updateDisplay();
+    }, 10000);
+}
+
+function scheduleRandomEvent() {
+    const nextEventDelay = Math.floor(Math.random() * 30000) + 30000; // 30s–60s
+    setTimeout(() => {
+        triggerCoffeeRush();
+        scheduleRandomEvent();
+    }, nextEventDelay);
+}
+
+scheduleRandomEvent(); // Start the first timed event cycle
+
 
     // Passive generation every second
     setInterval(() => {
@@ -230,6 +260,45 @@ muteButton.addEventListener("click", () =>{
         checkAchievements();
         updateDisplay();
     }, 1000);
+
+    const beanUpgrade1 = document.getElementById("beanUpgrade1");
+    const beanUpgrade2 = document.getElementById("beanUpgrade2");
+
+    let beanUpgrades = {
+        beanUpgrade1: false,
+        beanUpgrade2: false
+    };
+
+    beanUpgrade1.addEventListener("click", () => {
+        if (!beanUpgrades.beanUpgrade1 && beans >= 5) {
+            beans -= 5;
+            cupsPerSecond += 2;
+            beanUpgrades.beanUpgrade1 = true;
+            beanUpgrade1.disabled = true;
+            updateDisplay();
+            alert("You gained +2 Cups Per Second from the black market!");
+        } else if (beanUpgrades.beanUpgrade1) {
+            alert("You already bought this upgrade!");
+        } else {
+            alert("Not enough beans!");
+        }
+    });
+
+    beanUpgrade2.addEventListener("click", () => {
+        if (!beanUpgrades.beanUpgrade2 && beans >= 8) {
+            beans -= 8;
+            grinderCost = Math.floor(grinderCost / 2);
+            baristaCost = Math.floor(baristaCost / 2);
+            beanUpgrades.beanUpgrade2 = true;
+            beanUpgrade2.disabled = true;
+            updateDisplay();
+            alert("All upgrade costs halved!");
+        } else if (beanUpgrades.beanUpgrade2) {
+            alert("You already bought this upgrade!");
+        } else {
+            alert("Not enough beans!");
+        }
+    });
 
     // Menu toggle logic
     const menuButtons = document.querySelectorAll(".menu-btn");

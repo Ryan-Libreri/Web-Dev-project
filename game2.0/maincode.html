@@ -9,15 +9,20 @@
 <body>
     <header>
         <h1> Café Time!!</h1>
-        <p>Welcome to your cozy animal Café. Brew and serve delicious cups of joy!</p>
+    <p>Welcome to your cozy animal Café. Brew and serve delicious cups of joy!</p>
     </header>
+
+    <div id="eventBanner" class="hidden"></div>
+
+    <div id="eventBanner" style="display: none; text-align: center; font-weight: bold; background: #ffc107; padding: 10px;"></div>
 
     <main>
         
         <section class="game-display">
             <div class="resource-counter">
                 Coffee: <span id="CoffeeCount">0</span><br />
-                Coffee Per Second: <span id="CoffeePerSec">0</span>
+                Coffee Per Second: <span id="CoffeePerSec">0</span><br />
+                Beans: <span id="beanCount">0</span><br />
             </div>
 
             <button id="brewButton">Serve Coffee</button>
@@ -56,6 +61,8 @@
                 <button class="menu-btn" data-panel="upgradesPanel">🛠 Upgrades 🛠</button>
                 <button class="menu-btn" data-panel="prestigePanel">🔁 Prestige 🔁</button>
                 <button class="menu-btn" data-panel="achievementsPanel">🏆 Achievements 🏆</button>
+                <button id="beanUpgrade1">+2 Cups/sec (5 Beans)</button>
+                <button id="beanUpgrade2">Halve Costs (8 Beans)</button>
         </nav>
        </section>
         </section>

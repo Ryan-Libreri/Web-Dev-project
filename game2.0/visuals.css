@@ -213,3 +213,43 @@ body.prestige-10 {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+#eventBanner {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    background-color: #ffedc2;
+    border: 2px solid #e0b94d;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    display: none;
+    animation: fadeInOut 10s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#blackMarketPanel {
+  background-color: #1c1c1c;
+  color: #fff;
+  border: 2px solid #f4c95d;
+  box-shadow: 0 0 20px #f4c95d;
+}
+
+#blackMarketPanel button {
+  background-color: #444;
+  color: #f4c95d;
+}
+
+#blackMarketPanel button:hover {
+  background-color: #555;
+}
