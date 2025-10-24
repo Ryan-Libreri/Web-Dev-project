@@ -1,3 +1,5 @@
+https://github.com/Ryan-Libreri/Web-Dev-project/blob/master/banner%20(2).png
+
 # 🐾 The Little Paws Café 🐾
 
 A cozy web-based incremental clicker game where you serve coffee, upgrade your café, and unlock achievements — all in the warm company of adorable animal baristas.
