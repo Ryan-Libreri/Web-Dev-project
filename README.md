@@ -1,4 +1,7 @@
-https://github.com/Ryan-Libreri/Web-Dev-project/blob/master/banner%20(2).png
+<p align="center">
+  <img src="https://github.com/Ryan-Libreri/Web-Dev-project/blob/master/banner%20(2).png" alt="Statistical Modelling on Meteorites" width="70%">
+</p>
+
 
 # 🐾 The Little Paws Café 🐾
 
